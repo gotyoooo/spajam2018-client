@@ -9,6 +9,15 @@ public class UnityChanController : MonoBehaviour
     [SerializeField]
     private GameObject _vrCamera = null;
 
+    [SerializeField]
+    public AudioSource _source = null;
+
+    [SerializeField]
+    public RunningSceneController _runningSceneController = null;
+
+    [SerializeField]
+    private float _runningSpeed = 0.1f;
+
     private Vector3 _targetPos;
 
 
@@ -32,23 +41,22 @@ public class UnityChanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("up"))
+        if (_runningSceneController.CurrentPhase == RunningSceneController.Phase.Goal)
+        {
+            animator.SetBool("IsGoal", true);
+        }
+
+        if (_runningSceneController.CurrentPhase == RunningSceneController.Phase.Run)
         {
             animator.SetBool("IsRunning", true);
+            transform.position += transform.forward * _runningSpeed * Time.deltaTime;
         }
         else
         {
             animator.SetBool("IsRunning", false);
         }
 
-        if (Input.GetKey("down"))
-        {
-            animator.SetBool("IsTalking", true);
-        }
-        else
-        {
-            animator.SetBool("IsTalking", false);
-        }
+        animator.SetBool("IsTalking", _source.isPlaying);
     }
 
     private void OnAnimatorIK(int layerIndex)
@@ -56,26 +64,5 @@ public class UnityChanController : MonoBehaviour
         animator.SetLookAtWeight(1.0f, 0.1f, 50.0f, 100.0f, 50f);
         animator.SetLookAtPosition(_targetPos);
     }
-
-    //Animator animator;
-    //Vector3 targetPos;
-
-    //void Start()
-    //{
-    //    this.animator = GetComponent<Animator>();
-    //    this.targetPos = Camera.main.transform.position;
-    //}
-
-    //void Update()
-    //{
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        Vector3 touchPos = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-    //        touchPos.z = -0.5f;
-    //        targetPos = touchPos;
-    //    }
-    //}
-
-
 }
 
