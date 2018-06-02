@@ -460,6 +460,50 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13700004, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700008, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700004, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700024, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700018, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
+      propertyPath: m_BlendShapeWeights.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 2}
   m_IsPrefabParent: 0
@@ -675,6 +719,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1247609196}
   _vrCamera: {fileID: 1988900549}
+--- !u!114 &1628390583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1628390575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af41a06a85294d04486c9d97457447c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxWeight: 100
+  fullName: 0
+  guiStyle: 1
+  tabIndex: 0
 --- !u!1001 &1791280998
 Prefab:
   m_ObjectHideFlags: 0
@@ -740,6 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1004374192e4408890926d1f12faae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRun: 0
 --- !u!114 &1988900556
 MonoBehaviour:
   m_ObjectHideFlags: 0
