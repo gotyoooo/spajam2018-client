@@ -8,6 +8,9 @@ using System;
 public class RunningSceneController : MonoBehaviour {
 
     [SerializeField]
+    private GameObject _loadingPanel = null;
+
+    [SerializeField]
     public AudioSource source;
 
     [SerializeField]
@@ -24,10 +27,15 @@ public class RunningSceneController : MonoBehaviour {
 
     public float Timer = 5.0f;
 
+    private Boolean _startRunning = false;
     private Boolean _finishLastReq = false;
 
 	// Use this for initialization
-    void Start () {
+    IEnumerator Start () {
+        yield return new WaitForSeconds(2);
+        _loadingPanel.SetActive(false);
+        _startRunning = true;
+
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 #if UNITY_EDITOR
         Debug.Log("UNITY_EDITOR");
@@ -42,6 +50,11 @@ public class RunningSceneController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!_startRunning)
+        {
+            return;
+        }
+
         if (Timer <= 0)
         {
             CurrentPhase = Phase.Goal;

@@ -18,6 +18,9 @@ public class UnityChanController : MonoBehaviour
     [SerializeField]
     private float _runningSpeed = 0.1f;
 
+    [SerializeField]
+    private float _walkingSpeed = 0.1f;
+
     private Vector3 _targetPos;
 
 
@@ -44,6 +47,7 @@ public class UnityChanController : MonoBehaviour
         if (_runningSceneController.CurrentPhase == RunningSceneController.Phase.Goal)
         {
             animator.SetBool("IsGoal", true);
+            transform.position += transform.forward * _walkingSpeed * Time.deltaTime;
         }
 
         if (_runningSceneController.CurrentPhase == RunningSceneController.Phase.Run)

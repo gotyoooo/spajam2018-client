@@ -14,6 +14,9 @@ namespace App.TitleScene
         [SerializeField]
         private Text _countText = null;
 
+        [SerializeField]
+        private GameObject _LoadingPanel = null;
+
         private int _count = 0;
 
         public AudioSource source;
@@ -27,6 +30,7 @@ namespace App.TitleScene
         public void OnClickVRButton()
         {
             //SoundManager.Instance.PlaySE(0);
+            _LoadingPanel.SetActive(true);
             SceneManager.LoadScene("RunningScene");
         }
 
