@@ -28,7 +28,6 @@ namespace App.TitleScene
         public void OnClickVRButton()
         {
             SoundManager.Instance.PlaySE(0);
-            //SceneManager.LoadScene("ARScene");
             SceneManager.LoadScene("RunningScene");
         }
 
