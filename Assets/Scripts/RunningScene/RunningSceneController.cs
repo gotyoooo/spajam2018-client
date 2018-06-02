@@ -62,13 +62,13 @@ public class RunningSceneController : MonoBehaviour {
 
             if(!_finishLastReq)
             {
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 Debug.Log("UNITY_EDITOR");
                 StartCoroutine(PlayVoiceUnityChan("ogg", "とも君,お疲れ様！"));
                 StartCoroutine(RunnningPlayVoice("ogg", 100));
 #elif UNITY_IOS
             Debug.Log("UNITY_EDITOR");
-            StartCoroutine(PlayVoiceUnityChan("mp3", "とも君,お疲れ様！));
+            StartCoroutine(PlayVoiceUnityChan("mp3", "とも君,お疲れ様！"));
             StartCoroutine(RunnningPlayVoice("mp3", 100));
 #endif
                 _finishLastReq = true;
