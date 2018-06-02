@@ -19,12 +19,6 @@ namespace App.TitleScene
             SoundManager.Instance.PlayBGM(1);
         }
 
-        public void OnClickButton()
-        {
-            SoundManager.Instance.PlaySE(0);
-            SceneManager.LoadScene("MainScene");
-        }
-
         public void OnClickVRButton()
         {
             SoundManager.Instance.PlaySE(0);
