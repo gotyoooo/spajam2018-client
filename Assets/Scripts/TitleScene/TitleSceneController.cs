@@ -21,15 +21,24 @@ namespace App.TitleScene
 
         public AudioSource source;
 
+        private InputField inputField;
+        public static string userName;
+        public static string getUserName() {
+            return userName;
+        }
+
         private void Start()
         {
             //SoundManager.Instance.PlayBGM(1);
             source = gameObject.AddComponent<AudioSource>();
+            inputField = GameObject.Find("InputField").GetComponent<InputField>();
+            userName = inputField.text;
         }
 
         public void OnClickVRButton()
         {
             //SoundManager.Instance.PlaySE(0);
+            userName = inputField.text;
             _LoadingPanel.SetActive(true);
             SceneManager.LoadScene("RunningScene");
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using App.TitleScene;
 
 public class RunningSceneController : MonoBehaviour {
 
@@ -30,21 +31,26 @@ public class RunningSceneController : MonoBehaviour {
     private Boolean _startRunning = false;
     private Boolean _finishLastReq = false;
 
+    private string userName;
+
 	// Use this for initialization
     IEnumerator Start () {
         yield return new WaitForSeconds(2);
         _loadingPanel.SetActive(false);
         _startRunning = true;
 
+        Debug.Log(TitleSceneController.getUserName());
+        userName = TitleSceneController.getUserName();
+
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 #if UNITY_EDITOR
         Debug.Log("UNITY_EDITOR");
-        StartCoroutine(PlayVoiceUnityChan("ogg", "とも君,張り切っていこう！"));
-        StartCoroutine(RunnningPlayVoice("ogg", 100));
+        StartCoroutine(PlayVoiceUnityChan("ogg", userName, "ついてこないと置いてくからね"));
+        StartCoroutine(RunnningPlayVoice("ogg", userName, 45));
 #elif UNITY_IOS
         Debug.Log("UNITY_EDITOR");
-        StartCoroutine(PlayVoiceUnityChan("mp3", "とも君,張り切っていこう！"));
-        StartCoroutine(RunnningPlayVoice("mp3", 100));
+        StartCoroutine(PlayVoiceUnityChan("mp3", userName, "ついてこないと置いてくからね"));
+        StartCoroutine(RunnningPlayVoice("mp3", userName, 45));
 #endif
 	}
 	
@@ -64,12 +70,10 @@ public class RunningSceneController : MonoBehaviour {
             {
 #if UNITY_EDITOR
                 Debug.Log("UNITY_EDITOR");
-                StartCoroutine(PlayVoiceUnityChan("ogg", "とも君,お疲れ様！"));
-                StartCoroutine(RunnningPlayVoice("ogg", 100));
+                StartCoroutine(PlayVoiceUnityChan("ogg", userName, "勘違いしないでよね。アンタのために走ったんじゃないんだから"));
+                //StartCoroutine(RunnningPlayVoice("ogg", 100));
 #elif UNITY_IOS
-            Debug.Log("UNITY_EDITOR");
-            StartCoroutine(PlayVoiceUnityChan("mp3", "とも君,お疲れ様！"));
-            StartCoroutine(RunnningPlayVoice("mp3", 100));
+                StartCoroutine(PlayVoiceUnityChan("mp3", userName, "勘違いしないでよね。アンタのために走ったんじゃないんだから"));
 #endif
                 _finishLastReq = true;
             }
@@ -80,7 +84,7 @@ public class RunningSceneController : MonoBehaviour {
         var seconds = (int)Timer;
         _timerText.text = seconds.ToString();
 	}
-    private IEnumerator PlayVoiceUnityChan(string ext, string comment)
+    private IEnumerator PlayVoiceUnityChan(string ext, string name, string comment)
     {
         var username = "spajam2018";
         var password = "Lpnsen58";
@@ -88,16 +92,19 @@ public class RunningSceneController : MonoBehaviour {
         var speaker_name = "reina";
         var use_wdic = "1";
 
+        var text = String.Format("{0},{1}", name, comment);
+
         var url = string.Format(
             "https://webapi.aitalk.jp/webapi/v2/ttsget.php?username={0}&password={1}&text={2}&input_type={3}&speaker_name={4}&volume=1.00&speed=1.30&pitch=1.00&range=1.00&style=%7B%22j%22%3A%221.0%22%2C%22s%22%3A%220.0%22%2C%22a%22%3A%220.0%22%7D&ext={5}&use_wdic={6}",
             username,
             password,
-            comment,
+            text,
             input_type,
             speaker_name,
             ext,
             use_wdic
         );
+        Debug.Log(this.name);
         var uri = new Uri(url);
         print(uri.AbsoluteUri);
 
@@ -127,7 +134,7 @@ public class RunningSceneController : MonoBehaviour {
 
     }
 
-    private IEnumerator RunnningPlayVoice(string ext, int sec)
+    private IEnumerator RunnningPlayVoice(string ext, string name, int sec)
     {
         var username = "spajam2018";
         var password = "Lpnsen58";
@@ -135,13 +142,21 @@ public class RunningSceneController : MonoBehaviour {
         var speaker_name = "reina";
         var use_wdic = "1";
 
-        var interval = sec / 10;
+        string[] texts = new string[] {
+            "こののろまが",
+            "もっと速く走りなさいよ",
+            "なかなかやるじゃない"
+        };
+
+        int len = texts.Length;
+
+        var interval = sec / len;
 
         // ランニング中
-        for (int count = 0; count < sec; count += 10)
+        for (int count = 0; count < len; count ++)
         {
 
-            var text = "とも君,がんばれ！";
+            var text = String.Format("{0},{1}", name, texts[count]);
 
             var url = string.Format(
                 "https://webapi.aitalk.jp/webapi/v2/ttsget.php?username={0}&password={1}&text={2}&input_type={3}&speaker_name={4}&volume=1.00&speed=1.30&pitch=1.00&range=1.00&style=%7B%22j%22%3A%221.0%22%2C%22s%22%3A%220.0%22%2C%22a%22%3A%220.0%22%7D&ext={5}&use_wdic={6}",
