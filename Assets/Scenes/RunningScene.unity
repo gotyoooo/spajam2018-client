@@ -615,7 +615,7 @@ MonoBehaviour:
   source: {fileID: 659914807}
   _timerText: {fileID: 965029918}
   CurrentPhase: 0
-  Timer: 15
+  Timer: 60
 --- !u!4 &659914806
 Transform:
   m_ObjectHideFlags: 0
