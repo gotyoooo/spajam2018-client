@@ -43,7 +43,7 @@ public class RunningSceneController : MonoBehaviour {
         Debug.Log(TitleSceneController.getUserName());
         userName = TitleSceneController.getUserName();
 
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        //Screen.orientation = ScreenOrientation.LandscapeLeft;
 #if UNITY_EDITOR
         Debug.Log("UNITY_EDITOR");
         StartCoroutine(PlayVoiceUnityChan("ogg", userName, "ついてこないと置いてくからね"));
