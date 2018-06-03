@@ -33,6 +33,8 @@ public class RunningSceneController : MonoBehaviour {
     private Boolean _finishLastReq = false;
 
     private string userName;
+    private string speed;
+    private string second;
 
 	// Use this for initialization
     IEnumerator Start () {
@@ -40,8 +42,12 @@ public class RunningSceneController : MonoBehaviour {
         _loadingPanel.SetActive(false);
         _startRunning = true;
 
-        Debug.Log(TitleSceneController.getUserName());
         userName = TitleSceneController.getUserName();
+        //speed = TitleSceneController.getSpeed();
+        //second = TitleSceneController.getSecond();
+        Debug.Log(userName);
+        //Debug.Log(speed);
+        //Debug.Log(second);
 
         //Screen.orientation = ScreenOrientation.LandscapeLeft;
 #if UNITY_EDITOR

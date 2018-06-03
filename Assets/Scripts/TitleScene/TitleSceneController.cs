@@ -19,30 +19,51 @@ namespace App.TitleScene
 
         [SerializeField]
         private GameObject _inputField = null;
+        private GameObject _inputFieldSpeed = null;
+        private GameObject _inputFieldSecond = null;
 
         private int _count = 0;
 
         public AudioSource source;
 
         private InputField inputField;
+        private InputField inputFieldSpeed;
+        private InputField inputFieldSecond;
         public static string userName;
         public static string getUserName() {
             return userName;
         }
-
+        public static string speed;
+        public static string getSpeed()
+        {
+            return speed;
+        }
+        public static string second;
+        public static string getSecond()
+        {
+            return second;
+        }
         private void Start()
         {
             //SoundManager.Instance.PlayBGM(1);
             source = gameObject.AddComponent<AudioSource>();
             inputField = GameObject.Find("InputField").GetComponent<InputField>();
+            //inputField = GameObject.Find("InputFieldSpeed").GetComponent<InputField>();
+            //inputField = GameObject.Find("InputFieldSecond").GetComponent<InputField>();
             userName = inputField.text;
+            //speed = inputFieldSpeed.text;
+            //second = inputFieldSecond.text;
         }
 
         public void OnClickVRButton()
         {
             //SoundManager.Instance.PlaySE(0);
             userName = inputField.text;
+            //speed = inputFieldSpeed.text;
+            //second = inputFieldSecond.text;
             _inputField.SetActive(false);
+            //_inputFieldSpeed.SetActive(false);
+            //_inputFieldSecond.SetActive(false);
             _LoadingPanel.SetActive(true);
             SceneManager.LoadScene("RunningScene");
         }
