@@ -43,11 +43,11 @@ public class RunningSceneController : MonoBehaviour {
         _startRunning = true;
 
         userName = TitleSceneController.getUserName();
-        //speed = TitleSceneController.getSpeed();
-        //second = TitleSceneController.getSecond();
+        speed = TitleSceneController.getSpeed();
+        second = TitleSceneController.getSecond();
         Debug.Log(userName);
-        //Debug.Log(speed);
-        //Debug.Log(second);
+        Debug.Log(speed);
+        Debug.Log(second);
 
         //Screen.orientation = ScreenOrientation.LandscapeLeft;
 #if UNITY_EDITOR
