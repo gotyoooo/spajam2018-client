@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using App.TitleScene;
+using UnityEngine.SceneManagement;
 
 public class RunningSceneController : MonoBehaviour {
 
@@ -129,7 +130,13 @@ public class RunningSceneController : MonoBehaviour {
             yield return new WaitUntil(() => !source.isPlaying);
             // ボイス鳴り終わってからちょい待つ
             yield return new WaitForSeconds(3);
-            CurrentPhase++;
+            if (_finishLastReq) {
+                SceneManager.LoadScene("ResultScene");
+            }
+            else 
+            {
+                CurrentPhase++;
+            }
         }
 
     }
