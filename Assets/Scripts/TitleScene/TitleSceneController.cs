@@ -17,6 +17,9 @@ namespace App.TitleScene
         [SerializeField]
         private GameObject _LoadingPanel = null;
 
+        [SerializeField]
+        private GameObject _inputField = null;
+
         private int _count = 0;
 
         public AudioSource source;
@@ -39,6 +42,7 @@ namespace App.TitleScene
         {
             //SoundManager.Instance.PlaySE(0);
             userName = inputField.text;
+            _inputField.SetActive(false);
             _LoadingPanel.SetActive(true);
             SceneManager.LoadScene("RunningScene");
         }
